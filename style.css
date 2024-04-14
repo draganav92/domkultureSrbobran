@@ -1,0 +1,91 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel img {
+    width: 100%; 
+    height: auto; 
+}
+
+.carousel {
+    height: calc(66vh - 20px); 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    height: calc(66vh - 50px); 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem; 
+    height: 3rem; 
+}
+
+.carousel-inner {
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+.text-container{
+    text-align: justify;
+}
+
+footer{
+    background-color: #d4d3cf;
+}
+
+#nav.navbar{
+    
+    background-color: #d4d3cf !important; 
+}
+
+.navbar-custom .nav-link:hover {
+    color: #570913 !important; 
+}
+.slikapoz1, .slikapoz2 {
+    height: 300px; 
+    width: 500px; 
+    display: inline-block; 
+    margin: 30px 70px; 
+}
+
+.slike-container {
+    text-align: center; 
+    padding: 0 50px; 
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .slike-container {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0; 
+    }
+
+    .slikapoz1, .slikapoz2 {
+        width: 100%; 
+        height: auto; 
+        margin: 10px 0; 
+    }
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.custom-card {
+    width: 45%;
+    margin: 0 auto;
+}
