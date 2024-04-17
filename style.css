@@ -1,0 +1,311 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel img {
+    width: 100%; 
+    height: auto; 
+}
+
+.carousel {
+    height: calc(66vh - 20px); 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    height: calc(66vh - 50px); 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem; 
+    height: 3rem; 
+}
+
+.carousel-inner {
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+.text-container{
+    text-align: justify;
+}
+
+footer{
+    background-color: #d4d3cf;
+}
+
+#nav.navbar{
+    
+    background-color: #d4d3cf !important; 
+}
+
+.navbar-custom .nav-link:hover {
+    color: #570913 !important; 
+}
+.slikapoz1, .slikapoz2 {
+    height: 300px; 
+    width: 500px; 
+    display: inline-block; 
+    margin: 30px 70px; 
+}
+
+.slike-container {
+    text-align: center; 
+    padding: 0 50px; 
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .slike-container {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0; 
+    }
+
+    .slikapoz1, .slikapoz2 {
+        width: 100%; 
+        height: auto; 
+        margin: 10px 0; 
+    }
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.custom-card {
+    width: 45%;
+    margin: 0 auto;
+}
+
+.predstava-div {
+    display: flex; 
+    align-items: center; 
+    padding: 20px; 
+    width: 600px; 
+    margin-bottom: 20px; 
+}
+
+.predstava-div img {
+    width: 200px; 
+    height: 300px; 
+    margin-right: 20px; 
+}
+
+.predstava-div .podaci {
+    flex: 1; 
+}
+
+.predstava-div h2 {
+    font-size: 1.5em; 
+    margin-bottom: 10px; 
+    width: 300px;
+}
+
+.predstava-div p {
+    margin-bottom: 5px; 
+}
+
+.predstava-div button {
+    display: block; 
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.modal-container {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sediste {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+  }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 40%;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    z-index: 9999;
+  }
+
+  .detalji-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Dodajemo senku */
+}
+
+.detalji-div button {
+    border: none;
+    background-color:  #dcdedc;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.detalji-div button:hover {
+    background-color: #b4b8b5; 
+}
+
+.dropdown {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9); /* Prozirna bela pozadina */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Senka */
+    z-index: 999; /* Postavljamo visok indeks zasenjenja */
+}
+
+.dropdown::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ccc transparent;
+}
+
+/* Stilizacija pozorišne sale */
+.pozorisna-sala {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px; /* Podešavanje margine iznad sale */
+}
+
+/* Stilizacija sedišta */
+.sediste {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+}
+#pozicija-bine {
+    width: 20%;
+    height: 100px; /* Visina div-a za poziciju bine */
+    background-color: silver; /* Boja pozadine */
+    color: white; /* Boja teksta */
+    text-align: center;
+    line-height: 80px; /* Visina div-a */
+    margin: 0 auto 10px auto; /* Postavljamo margine tako da se div pozicionira na centar */
+}
+
+.sediste.selected {
+    background-color: #20b020; /* Promenite boju kako želite */
+}
+
+#rezervacija-info {
+    position: absolute;
+    width: 300px;
+    height: 460px ;
+    background-color: #f5f5f5;
+    padding: 10px;
+    overflow-y: auto;
+    display: none;
+    margin-top: 5%;
+}
+#rezervacija-info {
+    display: none; /* Sklanjamo div sa informacijama o rezervaciji po defaultu */
+}
+
+/* CSS za desktop verziju */
+@media screen and (min-width: 768px) {
+    #rezervacija-info {
+        position: absolute;
+        top: 0;
+        right: 20px; /* Pomeramo div ka desnoj ivici ekrana */
+        width: 300px;
+        height: calc(100vh +100px); /* Visina ekrana minus visina hedera i footera */
+        background-color: #f5f5f5;
+        padding: 10px;
+        overflow-y: auto;
+    }
+}
+/* CSS za mobilne uređaje
+@media screen and (max-width: 767px) {
+    #rezervacija-info {
+        position: relative; 
+        width: calc(100% - 40px);
+        margin: 20px auto; 
+    }
+} */
+
+/* CSS za prikazivanje rezervacija ispod sedišta za manje ekrane */
+@media screen and (max-width: 768px) {
+    #rezervacija-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f5f5f5;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 1; /* Da bude iznad sedišta */
+    }
+  }
