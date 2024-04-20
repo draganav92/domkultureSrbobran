@@ -1,0 +1,17 @@
+h4{
+    text-align: center;
+    margin-top: 10px;
+}
+
+form > input,textarea, button
+{
+    width: 300px;
+}
+
+.center{
+    background-color: #dfdfdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 2%;
+}

@@ -1,4 +1,4 @@
-var predstave = [
+/*var predstave = [
     {
         naziv: "Ко је убио Џенис Џоплин?",
         datum: "28.04.2024",
@@ -197,7 +197,7 @@ var predstave = [
         + "за себе – да пронађе своју сродну душу. Има ли је за Оливеру на овом целом свету? Или бар на интернету?"
     },
 ];
-
+*/
 
 
 // Funkcija za prikazivanje predstava
@@ -214,7 +214,7 @@ function prikaziPredstave(pred) {
         var slikaDiv = document.createElement("div");
         slikaDiv.classList.add("slika-div");
         var slika = document.createElement("img");
-        slika.src = predstava.slika;
+        slika.src = `data:image/jpeg;base64, ${predstava.slika}`;
         slika.alt = "Slika predstave";
         slikaDiv.appendChild(slika);
         div.appendChild(slikaDiv);
@@ -241,7 +241,7 @@ function prikaziPredstave(pred) {
 // Funkcija za pretragu predstava po nazivu
 function pretrazi() {
     var input = document.getElementById("pretraga").value.toLowerCase();
-    var filtriranePredstave = predstave.filter(function(predstava) {
+    var filtriranePredstave = slike.filter(function(predstava) {
         return predstava.naziv.toLowerCase().includes(input);
     });
     prikaziPredstave(filtriranePredstave);
@@ -249,10 +249,10 @@ function pretrazi() {
 
 
 // Funkcija za popunjavanje padajućeg menija sa žanrovima
-function popuniZanrove() {
+function popuniZanrove(pred) {
     var zanrovi = [];
     // Iteriramo kroz sve predstave i dodajemo jedinstvene žanrove u niz
-    predstave.forEach(function(predstava) {
+    pred.forEach(function(predstava) {
         if (!zanrovi.includes(predstava.zanr)) {
             zanrovi.push(predstava.zanr);
         }
@@ -286,7 +286,7 @@ function filtrirajPoZanru() {
     var izabraniZanr = zanrSelect.value.toLowerCase(); // Preuzimanje vrednosti izabranog žanra
 
     // Filtriranje predstava prema izabranom žanru
-    var filtriranePredstave = predstave.filter(function(predstava) {
+    var filtriranePredstave = slike.filter(function(predstava) {
         return izabraniZanr === "svi" || predstava.zanr.toLowerCase() === izabraniZanr;
     });
 
@@ -296,10 +296,10 @@ function filtrirajPoZanru() {
 
 
 // Pozivamo funkciju za popunjavanje padajućeg menija kada se stranica učita
-window.onload = function() {
-    popuniZanrove();
-    prikaziPredstave(predstave); // Prikažemo sve predstave kada se stranica učita
-};
+// window.onload = function() {
+//     popuniZanrove();
+//     prikaziPredstave(predstave); // Prikažemo sve predstave kada se stranica učita
+// };
 
 function prikaziDetalje(naziv) {
     var odabranaPredstava = predstave.find(function(predstava) {
@@ -361,26 +361,86 @@ function zatvoriModal() {
 
 
 // Funkcija za popunjavanje padajućeg menija sa žanrovima
-function popuniZanrove() {
-    var zanrSelect = document.getElementById("zanr");
-    var zanrovi = [];
-    // Iteriramo kroz sve predstave i dodajemo jedinstvene žanrove u niz
-    predstave.forEach(function(predstava) {
-        if (!zanrovi.includes(predstava.zanr)) {
-            zanrovi.push(predstava.zanr);
-        }
-    });
-    // Sortiramo niz žanrova po abecednom redu
-    zanrovi.sort();
-    // Popunjavamo padajući meni sa žanrovima
-    zanrovi.forEach(function(zanr) {
-        var option = document.createElement("option");
-        option.value = zanr.toLowerCase(); // Postavljamo vrednost malim slovima radi doslednosti
-        option.textContent = zanr;
-        zanrSelect.appendChild(option);
-        // Dodajemo event listener za promenu vrednosti svake opcije
-        option.addEventListener('change', function() {
-            filtrirajPoZanru();
-        });
-    });
+// function popuniZanrove() {
+//     var zanrSelect = document.getElementById("zanr");
+//     var zanrovi = [];
+//     // Iteriramo kroz sve predstave i dodajemo jedinstvene žanrove u niz
+//     predstave.forEach(function(predstava) {
+//         if (!zanrovi.includes(predstava.zanr)) {
+//             zanrovi.push(predstava.zanr);
+//         }
+//     });
+//     // Sortiramo niz žanrova po abecednom redu
+//     zanrovi.sort();
+//     // Popunjavamo padajući meni sa žanrovima
+//     zanrovi.forEach(function(zanr) {
+//         var option = document.createElement("option");
+//         option.value = zanr.toLowerCase(); // Postavljamo vrednost malim slovima radi doslednosti
+//         option.textContent = zanr;
+//         zanrSelect.appendChild(option);
+//         // Dodajemo event listener za promenu vrednosti svake opcije
+//         option.addEventListener('change', function() {
+//             filtrirajPoZanru();
+//         });
+//     });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// OVDE POCINJE BACK
+///ASYNC
+let slike = [];
+
+async function dohvatiPodatke() {
+    let response = await fetch('http://localhost/slika.php');
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
 }
+//Aktivna dokle god je korisnik na toj stranici
+async function main() {
+    try {
+        // Čekamo na ispunjenje promisa i dobijamo rezultat
+        slike = await dohvatiPodatke();
+
+        // Prosleđujemo rezultat običnoj funkciji
+        popuniZanrove(slike);
+        prikaziPredstave(slike);
+        pretrazi();
+
+        // Možete nastaviti sa radom unutar main funkcije/ispis greske
+    } catch (error) {
+        console.error('Greška prilikom povlačenja slika:', error);
+    }
+}
+
+window.onload = main;
+// fetch('http://localhost/slika.php')
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then(slike => {
+//             slike.forEach(function(encodedImage) {
+//                 let imgElement = document.createElement('img');
+//                 imgElement.src = `data:image/jpeg;base64, ${encodedImage}`;
+//                 imgElement.width = 200;
+//                 imgElement.height = 200;
+//                 document.getElementById('slikeContainer').appendChild(imgElement);
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Greška prilikom povlačenja slika:', error);
+//         });
