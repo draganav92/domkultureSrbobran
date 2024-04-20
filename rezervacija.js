@@ -212,7 +212,7 @@ function prikaziInformacijeORezervaciji() {
         var red = Math.ceil(parseInt(sediste.textContent) / 10);
         var cena = predstave[dropPredstava.selectedIndex].cena;
         ukupnaCena += cena;
-        rezervacijaHTML += `<li>Ред: ${red}, Број седишта: ${sediste.textContent[0]}, Цена улазнице: ${cena} дин</li>`;
+        rezervacijaHTML += `<li>Ред: ${red}, Број седишта: ${parseInt(sediste.textContent)}, Цена улазнице: ${cena} дин</li>`;
 
     });
 
