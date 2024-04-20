@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрација</title>
+</head>
+<body>
+    <!--
+    <nav>
+        <ul>
+            <li ><a  href="#" onclick="openLoginForm('login')">Пријава</a></li>
+            <li ><a   href="#" onclick="openLoginForm('register')">Регистрација</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Почетна</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div id="login-form">
+        <span class="close" onclick="closeLoginForm()">&times;</span>
+        <h2 id="form-title">Пријава/Регистрација</h2>
+        <form>
+            <label for="username">Корисничко име:</label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Лозинка:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        // Funkcija za otvaranje forme, sada uzima argument "type" koji određuje da li je forma za login ili registraciju
+        function openLoginForm(type) {
+            var formTitle = document.getElementById('form-title');
+            var submitBtn = document.querySelector('#login-form input[type="submit"]');
+    
+            if (type === 'register') {
+                formTitle.textContent = 'Регистрација';
+                submitBtn.value = 'Регистрација';
+            } else {
+                formTitle.textContent = 'Пријава';
+                submitBtn.value = 'Пријава';
+            }
+    
+            document.getElementById('login-form').style.display = 'block';
+        }
+    
+        // Funkcija za zatvaranje forme
+        function closeLoginForm() {
+            document.getElementById('login-form').style.display = 'none';
+        }
+    </script> -->
+    <nav>
+        <ul>
+            <!-- Dodajemo linkove za prijavu i registraciju -->
+            <li><a href="#" onclick="loginOrRegister('login')">Пријава</a></li>
+            <li><a href="#" onclick="loginOrRegister('register')">Регистрација</a></li>
+        </ul>
+    </nav>
+    
+    <script>
+    // Funkcija koja prikazuje alert prozor za prijavu ili registraciju
+    function loginOrRegister(action) {
+        var username = prompt("Унесите корисночко име:");
+        var password = prompt("Унесите лозинку:");
+    
+        // Provera korisničkog imena i lozinke
+        if (action === 'login') {
+            if (username === "admin" && password === "admin") {
+                alert("Успешно сте се пријавили!");
+            } else {
+                alert("Prijavljivanje nije uspelo. Pogrešno korisničko ime ili lozinka.");
+            }
+        } else if (action === 'register') {
+            // Ovde dodajte logiku za registraciju
+            alert("Funkcija registracije još nije implementirana.");
+        }
+    }
+    </script> 
+
+
+</body>
+</html>
