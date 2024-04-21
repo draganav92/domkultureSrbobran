@@ -401,7 +401,7 @@ function zatvoriModal() {
 let slike = [];
 
 async function dohvatiPodatke() {
-    let response = await fetch('http://pozoristephpmysql.kesug.com/slika.php');
+    let response = await fetch('https://pozoristephpmysql.kesug.com/slika.php');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
