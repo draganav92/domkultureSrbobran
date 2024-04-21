@@ -401,7 +401,9 @@ function zatvoriModal() {
 let slike = [];
 
 async function dohvatiPodatke() {
-    let response = await fetch('https://pozoristephpmysql.kesug.com/slika.php');
+    let response = await fetch('https://pozoristephpmysql.kesug.com/slika.php', {
+        mode: 'no-cors' // Postavljanje moda na 'no-cors'
+    });
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
