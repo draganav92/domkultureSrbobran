@@ -109,14 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
         var kor = JSON.parse(loggedInUser);
-        console.log(kor.korisnik.IDKorisnik);
         document.getElementById('logout-btn').style.display = 'block';
 
         document.getElementById('loginRegister-btn').style.display = 'none';
-        if(kor.korisnik.IDKorisnik === 1) {
+        if(kor.IDKorisnik === 1) {
             document.getElementById('admin-link').style.display = 'block';
         }
     }
 });
-
-// OVO
