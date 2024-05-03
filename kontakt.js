@@ -3,7 +3,7 @@ document.getElementById("kontaktForma").addEventListener("submit", function(even
     event.preventDefault();
 
     var formData = new FormData(this);
-
+    console.log(formData);
     fetch('http://localhost/kontaktForma.php', {
         method: 'POST',
         body: formData
@@ -16,7 +16,6 @@ document.getElementById("kontaktForma").addEventListener("submit", function(even
         alert(data.message);
     })
     .catch(error => {
-        // Obradi grešku
         console.error('Greška:', error);
     });
 });

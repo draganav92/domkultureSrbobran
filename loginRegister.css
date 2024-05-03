@@ -1,0 +1,43 @@
+.login-register-container {
+    position: fixed;
+    top: 45px;
+    right: 20px;
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 500px;
+}
+
+.login-register-card {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.login-register-card input[type="text"],
+.login-register-card input[type="password"],
+.login-register-card input[type="email"],
+.login-register-card button {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-register-card button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.login-register-card button:hover {
+    background-color: #0056b3;
+}

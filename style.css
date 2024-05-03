@@ -1,16 +1,14 @@
 .carousel {
     position: relative;
     overflow: hidden;
-}
-.carousel img {
-    width: 100%; 
-    height: auto; 
-}
-
-.carousel {
     height: calc(66vh - 20px); 
     margin-top: 20px; 
     margin-bottom: 20px;
+}
+
+.carousel img {
+    width: 100%; 
+    height: auto; 
 }
 
 .carousel-control-prev,
@@ -37,14 +35,23 @@ footer{
     background-color: #d4d3cf;
 }
 
-#nav.navbar{
-    
+header
+{
+    margin-bottom: 5%;
+}
+
+#nav.navbar{  
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     background-color: #d4d3cf !important; 
 }
 
 .navbar-custom .nav-link:hover {
     color: #570913 !important; 
 }
+
 .slikapoz1, .slikapoz2 {
     height: 300px; 
     width: 500px; 
@@ -186,7 +193,7 @@ footer{
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Dodajemo senku */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .detalji-div button {
@@ -205,12 +212,12 @@ footer{
 
 .dropdown {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.9); /* Prozirna bela pozadina */
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Senka */
-    z-index: 999; /* Postavljamo visok indeks zasenjenja */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
 }
 
 .dropdown::before {
@@ -224,16 +231,16 @@ footer{
     border-color: transparent transparent #ccc transparent;
 }
 
-/* Stilizacija pozorišne sale */
+
 .pozorisna-sala {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px; /* Podešavanje margine iznad sale */
+    margin-top: 50px;
 }
 
-/* Stilizacija sedišta */
+
 .sediste {
     width: 50px;
     height: 50px;
@@ -247,16 +254,16 @@ footer{
 }
 #pozicija-bine {
     width: 20%;
-    height: 100px; /* Visina div-a za poziciju bine */
-    background-color: silver; /* Boja pozadine */
-    color: white; /* Boja teksta */
+    height: 100px; 
+    background-color: silver;
+    color: white;
     text-align: center;
-    line-height: 80px; /* Visina div-a */
-    margin: 0 auto 10px auto; /* Postavljamo margine tako da se div pozicionira na centar */
+    line-height: 80px; 
+    margin: 0 auto 10px auto;
 }
 
 .sediste.selected {
-    background-color: #20b020; /* Promenite boju kako želite */
+    background-color: #20b020; 
 }
 
 #rezervacija-info {
@@ -270,32 +277,24 @@ footer{
     margin-top: 5%;
 }
 #rezervacija-info {
-    display: none; /* Sklanjamo div sa informacijama o rezervaciji po defaultu */
+    display: none; 
 }
 
-/* CSS za desktop verziju */
+
 @media screen and (min-width: 768px) {
     #rezervacija-info {
         position: absolute;
         top: 0;
-        right: 20px; /* Pomeramo div ka desnoj ivici ekrana */
+        right: 20px; 
         width: 300px;
-        height: calc(100vh +100px); /* Visina ekrana minus visina hedera i footera */
+        height: calc(100vh +100px); 
         background-color: #f5f5f5;
         padding: 10px;
         overflow-y: auto;
     }
 }
-/* CSS za mobilne uređaje
-@media screen and (max-width: 767px) {
-    #rezervacija-info {
-        position: relative; 
-        width: calc(100% - 40px);
-        margin: 20px auto; 
-    }
-} */
 
-/* CSS za prikazivanje rezervacija ispod sedišta za manje ekrane */
+
 @media screen and (max-width: 768px) {
     #rezervacija-info {
       position: absolute;
@@ -306,9 +305,9 @@ footer{
       padding: 10px;
       box-sizing: border-box;
       text-align: center;
-      z-index: 1; /* Da bude iznad sedišta */
+      z-index: 1;
     }
-    .center{ /*centrira formu na kontakt stranici*/
+    .center{
     background-color: #dfdfdb;
     display: flex;
     justify-content: center;

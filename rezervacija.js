@@ -1,152 +1,20 @@
-var predstave = [
-    {
-        naziv: "Ко је убио Џенис Џоплин?",
-        datum: "28.04.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Соња Петровић",
-        trajanje: "2 sata",
-        slika: "slike/dzenisdzoplin.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Била једном једна земља",
-        datum: "29.04.2024",
-        termin: "19:00",
-        cena: 1100,
-        reziser: "Кокан Младеновић",
-        trajanje: "2 sata",
-        slika: "slike/bilajednomjednazemlja.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Kaко сам постала фрајла",
-        datum: "30.04.2024",
-        termin: "20:00",
-        cena: 1200,
-        reziser: "Вишња Обрадовић",
-        trajanje: "2 sata",
-        slika: "slike/kakosampostalafrajla.jpg",
-        zanr: "комедија"
-    },
-    {
-        naziv: "Враголанка",
-        datum: "03.05.2024",
-        termin: "20:30",
-        cena: 800,
-        reziser: "Калин Ханциу",
-        trajanje: "1.5 sati",
-        slika: "slike/vragolanka.jpg",
-        zanr: "балет"
-    },
-    {
-        naziv: "Ујеж",
-        datum: "03.05.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Радослав Миленковић",
-        trajanje: "2 sata",
-        slika: "slike/ujez.jpg",
-        zanr: "комедија"
-    },
-    {
-        naziv: "Вештице из Салема",
-        datum: "05.05.2024",
-        termin: "20:00",
-        cena: 1100,
-        reziser: "Никита Миливојевић",
-        trajanje: "2 sata",
-        slika: "slike/vesticeizsalema.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Не мо`ш побећи од недеље",
-        datum: "09.05.2024",
-        termin: "20:00",
-        cena: 900,
-        reziser: "Тамара Кострешевић",
-        trajanje: "2 sata",
-        slika: "slike/nemospobeciodnedelje.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Женидба на чардаку",
-        datum: "10.05.2024",
-        termin: "19:30",
-        cena: 1000,
-        reziser: "Соња Петровић",
-        trajanje: "2 sata",
-        slika: "slike/zenidbanacardaku.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Мишја грозница",
-        datum: "12.05.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Ђорђе Нешовић",
-        trajanje: "2 sata",
-        slika: "slike/misjagroznica.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Алабама",
-        datum: "15.05.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Рахим Бурхан",
-        trajanje: "2 sata",
-        slika: "slike/alabama.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Царство мрака",
-        datum: "16.05.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Игор Вук Торбица",
-        trajanje: "2 sata",
-        slika: "slike/carstvomraka.jpg",
-        zanr: "драма"
-    },
-    {
-        naziv: "Севиљски берберин",
-        datum: "21.05.2024",
-        termin: "20:00",
-        cena: 1000,
-        reziser: "Иван Клеменц",
-        trajanje: "2 sata",
-        slika: "slike/seviljskiberberin.jpg",
-        zanr: "опера"
-    },
-    {
-        naziv: "Дејт",
-        datum: "30.05.2024",
-        termin: "20:00",
-        cena: 1400,
-        reziser: "Сандра Силађев",
-        trajanje: "2 sata",
-        slika: "slike/dejt.jpg",
-        zanr: "драма"
-    },
-];
 
-// Funkcija za popunjavanje padajućeg menija sa opcijama za predstave
-function popuniPadajuciMeni() {
+function popuniPadajuciMeni(pred) {
     var dropPredstava = document.getElementById("dropPredstava");
 
-    // Iteriramo kroz sve predstave i dodajemo opcije u padajući meni
-    predstave.forEach(function(predstava) {
+    pred.forEach(function(predst) {
         var option = document.createElement("option");
-        option.value = predstava.naziv; // Postavljamo vrednost opcije na naziv predstave
-        option.textContent = predstava.naziv; // Postavljamo tekst opcije na naziv predstave
+        option.value = predst.predstava.IDPredstava; 
+        option.textContent = predst.predstava.NazivPredstave; 
         dropPredstava.appendChild(option);
+
     });
 }
 
-// Funkcija za generisanje sedišta unutar redova pozorisne sale
-function generisiSedista() {
+
+function generisiSedista(nizSedista) {
     var pozorisnaSala = document.querySelector('.pozorisna-sala');
+    pozorisnaSala.innerHTML = "";
     for (var i = 1; i <= 5; i++) {
         var redDiv = document.createElement('div');
         redDiv.classList.add('red' + i);
@@ -155,121 +23,202 @@ function generisiSedista() {
             sedisteDiv.classList.add('sediste');
             sedisteDiv.id = 'sediste_' + j;
             sedisteDiv.textContent = (i - 1) * 10 + j;
+
+            var objekat = nizSedista.find(function(obj) {
+                return parseInt(sedisteDiv.textContent) === obj.BrojSedista;
+            });
+            if (objekat) {
+                sedisteDiv.style.backgroundColor = 'blue';
+                sedisteDiv.style.color = 'white';
+                sedisteDiv.style.pointerEvents = "none";
+            }
+
             redDiv.appendChild(sedisteDiv);
         }
         pozorisnaSala.appendChild(redDiv);
     }
 
-    // Dodavanje event listenera na sva sedišta
+
     var sedista = document.querySelectorAll('.sediste');
     sedista.forEach(function(sediste) {
         sediste.addEventListener('click', klikNaSediste);
     });
 }
 
-// Pozivamo funkciju za popunjavanje padajućeg menija kada se stranica učita
-window.onload = function() {
-    popuniPadajuciMeni();
-    generisiSedista();
-    postaviDogadjajZaSedista();
 
-};
 
-// Funkcija za obradu klika na sedište
 function klikNaSediste(event) {
     var sediste = event.target;
 
-    // Proveravamo da li je sedište već rezervisano
     if (sediste.classList.contains('rezervisano')) {
-        // Ako jeste, odustajemo od rezervacije
+        ukloniRezervaciju(sediste.textContent);
         sediste.classList.remove('rezervisano');
     } else {
-        // Ako nije, označavamo sedište kao rezervisano
+        dodajRezervaciju(sediste.textContent);
         sediste.classList.add('rezervisano');
     }
 
-    // Prikazujemo informacije o rezervaciji
     prikaziInformacijeORezervaciji();
 }
 
-// Funkcija za prikazivanje informacija o rezervaciji
+
+let rezervacije = [];
+function dodajRezervaciju(sediste) {
+    const selectedShow = document.getElementById('dropPredstava').value;
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (!loggedInUser) {
+        alert('Morate biti prijavljeni da biste rezervisali sedište.');
+        return;
+    }
+
+    rezervacije.push({
+        IDRezervacija: parseInt(),
+        IDPredstave: parseInt(selectedShow),
+        IDKorisnika: loggedInUser.korisnik.IDKorisnik,
+        sediste: parseInt(sediste)
+    });
+    console.log(rezervacije)
+}
+
+function ukloniRezervaciju(sediste) {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (!loggedInUser) {
+        alert('Morate biti prijavljeni da biste uklonili rezervaciju.');
+        return;
+    }
+
+    rezervacije = rezervacije.filter(rezervacija => {
+        return !(rezervacija.sediste === sediste && rezervacija.IDKorisnika === loggedInUser.korisnik.IDKorisnik);
+    });
+    console.log(rezervacije);
+}
+
+
 function prikaziInformacijeORezervaciji() {
     var rezervisanaSedista = document.querySelectorAll('.rezervisano');
     var rezervacijaInfo = document.getElementById('rezervacija-info');
 
     var ukupnaCena = 0;
 
-    // Ako nema rezervisanih sedišta, sakrijemo div rezervacija-info
+
     if (rezervisanaSedista.length === 0) {
         rezervacijaInfo.style.display = 'none';
-        return; // Izlazimo iz funkcije jer nema potrebe za daljim izvršavanjem
+        return;
     }
 
-    // Kreiramo HTML za informacije o rezervaciji
     var rezervacijaHTML = '<h3>Резервисана седишта:</h3><ul>';
 
     rezervisanaSedista.forEach(function(sediste) {
+        var index = document.getElementById('dropPredstava').value;
+
         var red = Math.ceil(parseInt(sediste.textContent) / 10);
-        var cena = predstave[dropPredstava.selectedIndex].cena;
+        var cena = parseInt(dropDM[index].karta.Cena);
+
         ukupnaCena += cena;
         rezervacijaHTML += `<li>Ред: ${red}, Број седишта: ${parseInt(sediste.textContent)}, Цена улазнице: ${cena} дин</li>`;
-
     });
 
     rezervacijaHTML += `</ul><p><strong>Укупна цена:</strong> ${ukupnaCena} дин</p><button onclick="rezervisi()">Резервиши</button>`;
 
-    // Postavljamo HTML sadržaj u div rezervacija-info
     rezervacijaInfo.innerHTML = rezervacijaHTML;
         
-
-    // Prikazujemo div rezervacija-info
     rezervacijaInfo.style.display = 'block';
 }
 
-// Funkcija za rezervisanje odabranih sedišta
-function rezervisi() {
-    // Ovde možeš dodati logiku za slanje rezervacije na server ili neku drugu akciju koju želiš da izvršiš
-    // Na primer, možeš poslati AJAX zahtev sa informacijama o rezervaciji
-    alert('Rezervacija uspešno izvršena!');
+
+
+async function rezervisi() {
+    let response;
+
+    try {
+        if (rezervacije.length === 0) {
+            alert('Nema rezervacija za slanje.');
+            return;
+        }
+        console.info(JSON.parse(JSON.stringify(rezervacije)));
+        let formData = new FormData();
+        formData.append('rezervacije', JSON.stringify(rezervacije));
+        try {
+            response = await fetch('http://localhost/klasaR.php', {
+                method: 'POST',
+                body: formData
+            });
+        } catch(error) {
+            console.error('Greška prilikom slanja zahteva:', error);
+            alert("Greška prilikom slanja zahteva: " + error);
+            return;
+        }
+
+        try {
+            if (!response.ok) {
+                throw new Error('Došlo je do greške prilikom slanja rezervacija.');
+            }
+            console.log(response);
+        } catch(error) {
+            console.error('Greška prilikom provere odgovora:', error);
+            alert("Greška prilikom provere odgovora: " + error);
+            return;
+        }
+        
+        try {
+            const data = await response.json();
+            console.log(data);
+            alert('Rezervacija uspešno poslata.');
+
+            rezervacije = [];
+            location.reload();
+        } catch(error) {
+            console.error('Greška prilikom obrade podataka:', error);
+            alert("Greška prilikom obrade podataka: " + error);
+        }
+    } catch (error) {
+        console.error('Greška:', error);
+        alert('Došlo je do greške.');
+    } 
 }
 
-// Dodajemo event listener za klik na sedišta
+
+
+
+
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('sediste')) {
-        event.target.classList.toggle('selected'); // Toggle klasu 'selected' na kliknutom sedištu
+        event.target.classList.toggle('selected');
     }
 });
 
-// Funkcija za prikazivanje informacija o sedištu
+
 function prikaziInformacijeOSedistu(sediste) {
-    var red = Math.ceil(sediste / 10); // Računamo red sedišta
-    var brojSedista = sediste; // Broj sedišta je upravo broj koji je generisan
-    var cena = predstave[dropPredstava.selectedIndex].cena; // Dobavljamo cenu izabranog filma
+    var red = Math.ceil(sediste / 10);
+    var brojSedista = sediste; 
+    var cena = predstave[dropPredstava.selectedIndex].cena;
     let informacije = `Ред: ${red}, Број седишта: ${brojSedista}, Цена улазнице: ${cena} дин`;
 
     console.log(informacije);
 
     return informacije;
 }
-// Funkcija za postavljanje događaja pri prelasku mišem preko sedišta
+
 function postaviDogadjajZaSedista() {
     var sedista = document.querySelectorAll('.sediste');
 
     sedista.forEach(function(sediste) {
         sediste.addEventListener('mouseenter', function() {
             var informacije = prikaziInformacijeOSedistu(parseInt(this.textContent));
-            // Kreiramo padajući meni sa informacijama i pozicioniramo ga u odnosu na sedište
+
             var dropdown = document.createElement('div');
             dropdown.classList.add('dropdown');
             dropdown.textContent = informacije;
             dropdown.style.position = 'absolute';
-            dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; // Pozicioniramo ispod sedišta
+            dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; 
             dropdown.style.left = sediste.offsetLeft + 'px';
             sediste.appendChild(dropdown);
         });
 
         sediste.addEventListener('mouseleave', function() {
-            // Uklanjamo padajući meni kada miš napusti sedište
+
             var dropdown = this.querySelector('.dropdown');
             if (dropdown) {
                 dropdown.remove();
@@ -278,3 +227,79 @@ function postaviDogadjajZaSedista() {
         });
     });
 }
+
+
+
+
+
+
+
+let dropDM = [];
+let greenDiv = [];
+
+async function dohvatiPodatke() {
+    let response = await fetch('http://localhost/dropDownMenu.php');
+    if (!response.ok) {
+        throw new Error('Network response was not ok1');
+    }
+    return response.json();
+}
+
+
+document.getElementById('dropPredstava').addEventListener('change', function() {
+    var selectedValue = this.value;
+    posaljiVrednostNaServer(selectedValue);
+});
+
+async function posaljiVrednostNaServer(selectedValue) {
+    try {
+        const formData = new FormData();
+        formData.append('idPredstave', selectedValue);
+
+        const response = await fetch('http://localhost/klasaR.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Došlo je do greške prilikom slanja zahteva.');
+        }
+
+        const rezultat = await response.json();
+
+        console.log('Odgovor sa servera:', rezultat);
+        var nizRezultata = JSON.parse(rezultat);
+        
+        console.log(typeof nizRezultata);
+        nizRezultata.forEach(function(obj) {
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    console.log('Tip vrednosti za ključ ' + key + ' je: ' + typeof obj[key]);
+                }
+            }
+        });
+        generisiSedista(nizRezultata);
+    } catch (error) {
+        console.error('Greška:', error);
+    }
+}
+  
+
+
+
+
+
+async function main() {
+    try {
+        dropDM = await dohvatiPodatke();
+        popuniPadajuciMeni(dropDM);
+
+        postaviDogadjajZaSedista();
+
+        prikaziInformacijeORezervaciji();
+    } catch (error) {
+        console.error('Greška prilikom povlačenja slika:', error);
+    }
+}
+
+window.onload = main;

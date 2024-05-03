@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,4 +64,100 @@
 
     <script src="panel.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панел</title>
+    <link rel="stylesheet" href="panelcss.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Админ Панел</h1>
+        <h2>Корисници</h2>
+        <table id="users-table">
+
+        </table>
+        <button id="add-user-btn">Додај корисника</button>
+
+        <h2>Резервације</h2>
+        <table id="bookings-table">
+
+        </table>
+    </div>
+
+    <div id="add-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Додај новог корисника</h3>
+            <form id="add-user-form">
+
+                <label for="username">Корисничко име:</label>
+                <input type="text" id="username" name="username" required autocomplete="current-password">
+
+                <label for="password">Лозинка:</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+
+                <label for="email">Емаил адреса:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Додај</button>
+            </form>
+        </div>
+    </div>
+
+    <h2>Представе</h2>
+<table id="shows-table">
+
+</table>
+<button id="add-show-btn">Додај представу</button>
+
+
+<div id="add-show-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Додај нову представу</h3>
+        <form id="add-show-form">
+            <label for="show-title">Назив представе:</label>
+            <input type="text" id="show-title" name="show-title" required>
+            
+            <label for="show-genre">Жанр:</label>
+            <input type="text" id="show-genre" name="show-genre" required>
+            
+            <label for="show-director">Режисер:</label>
+            <input type="text" id="show-director" name="show-director">
+            
+            <label for="show-duration">Трајање:</label>
+            <input type="text" id="show-duration" name="show-duration"><br/>
+            
+            <label for="show-roles">Улоге:</label>
+            <textarea id="show-roles" name="show-roles"></textarea>
+            
+            <label for="show-description">Опис:</label>
+            <textarea id="show-description" name="show-description"></textarea>
+            
+            <label for="show-image">Слика:</label>
+            <input type="file" id="show-image" name="show-image">
+            
+            <label for="show-tickets">Цена карте:</label>
+            <input type="number" id="show-tickets" name="show-tickets" required><br/>
+            
+            <label for="show-date">Датум:</label>
+            <input type="date" id="show-date" name="show-date" required>
+            
+            <label for="show-time">Време:</label>
+            <input type="time" id="show-time" name="show-time" required>
+            
+            <button type="submit">Додај</button>
+        </form>  
+    </div>
+</div>
+
+
+
+    <script src="panel.js"></script>
+</body>
+>>>>>>> 893b85a (Message: Finish)
 </html>
