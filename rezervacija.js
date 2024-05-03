@@ -1,3 +1,4 @@
+
 function popuniPadajuciMeni(pred) {
     var dropPredstava = document.getElementById("dropPredstava");
 
@@ -224,7 +225,74 @@ function postaviDogadjajZaSedista() {
             if (dropdown) {
                 dropdown.remove();
             }
-
         });
     });
 }
+
+
+
+
+
+let dropDM = [];
+let greenDiv = [];
+
+async function dohvatiPodatke() {
+    let response = await fetch('http://localhost/dropDownMenu.php');
+    if (!response.ok) {
+        throw new Error('Network response was not ok1');
+    }
+    return response.json();
+}
+
+
+document.getElementById('dropPredstava').addEventListener('change', function() {
+    var selectedValue = this.value;
+    posaljiVrednostNaServer(selectedValue);
+});
+
+async function posaljiVrednostNaServer(selectedValue) {
+    try {
+        const formData = new FormData();
+        formData.append('idPredstave', selectedValue);
+
+        const response = await fetch('http://localhost/klasaR.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error('Došlo je do greške prilikom slanja zahteva.');
+        }
+
+        const rezultat = await response.json();
+
+        
+        var nizRezultata = JSON.parse(rezultat);
+        generisiSedista(nizRezultata);
+    } catch (error) {
+        console.error('Greška:', error);
+    }
+}
+  
+
+
+
+
+
+async function main() {
+    try {
+        dropDM = await dohvatiPodatke();
+        popuniPadajuciMeni(dropDM);
+
+        postaviDogadjajZaSedista();
+
+        prikaziInformacijeORezervaciji();
+
+    } catch (error) {
+        console.error('Greška prilikom povlačenja slika:', error);
+    }
+}
+
+window.onload = main;
+
+// OVO

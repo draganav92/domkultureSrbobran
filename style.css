@@ -44,21 +44,6 @@ header
     margin-bottom: 5%;
 }
 
-header
-{
-    margin-bottom: 5%;
-}
-
-header
-{
-    margin-bottom: 5%;
-}
-
-#nav.navbar{  
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
 #nav.navbar{  
     position: fixed;
     width: 100%;
@@ -70,7 +55,6 @@ header
 .navbar-custom .nav-link:hover {
     color: #570913 !important; 
 }
-
 
 .slikapoz1, .slikapoz2 {
     height: 300px; 
@@ -214,7 +198,6 @@ header
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .detalji-div button {
@@ -234,12 +217,9 @@ header
 .dropdown {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     z-index: 999;
 }
@@ -256,16 +236,13 @@ header
 }
 
 
-
 .pozorisna-sala {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
-    margin-top: 50px;
 }
-
 
 
 .sediste {
@@ -284,7 +261,12 @@ header
     height: 100px;
     background-color: silver;
     color: white;
+    height: 100px;
+    background-color: silver;
+    color: white;
     text-align: center;
+    line-height: 80px;
+    margin: 0 auto 10px auto;
     line-height: 80px;
     margin: 0 auto 10px auto;
 }
@@ -308,16 +290,13 @@ header
 }
 
 
-
 @media screen and (min-width: 768px) {
     #rezervacija-info {
         position: absolute;
         top: 0;
-        right: 20px; 
-        right: 20px; 
+        right: 20px; /* Pomeramo div ka desnoj ivici ekrana */
         width: 300px;
-        height: calc(100vh +100px); 
-        height: calc(100vh +100px); 
+        height: calc(100vh +100px); /* Visina ekrana minus visina hedera i footera */
         background-color: #f5f5f5;
         padding: 10px;
         overflow-y: auto;
@@ -336,7 +315,6 @@ header
       padding: 10px;
       box-sizing: border-box;
       text-align: center;
-      z-index: 1;
       z-index: 1;
     }
     .center{
