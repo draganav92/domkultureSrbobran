@@ -223,7 +223,6 @@ function postaviDogadjajZaSedista() {
             if (dropdown) {
                 dropdown.remove();
             }
-
         });
     });
 }
