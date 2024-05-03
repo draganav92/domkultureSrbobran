@@ -49,6 +49,11 @@ header
     margin-bottom: 5%;
 }
 
+header
+{
+    margin-bottom: 5%;
+}
+
 #nav.navbar{  
     position: fixed;
     width: 100%;

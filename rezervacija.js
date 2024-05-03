@@ -14,7 +14,6 @@ function popuniPadajuciMeni(pred) {
 function generisiSedista(nizSedista) {
     var pozorisnaSala = document.querySelector('.pozorisna-sala');
     pozorisnaSala.innerHTML = "";
-    pozorisnaSala.innerHTML = "";
     for (var i = 1; i <= 5; i++) {
         var redDiv = document.createElement('div');
         redDiv.classList.add('red' + i);
@@ -33,21 +32,10 @@ function generisiSedista(nizSedista) {
                 sedisteDiv.style.pointerEvents = "none";
             }
 
-
-            var objekat = nizSedista.find(function(obj) {
-                return parseInt(sedisteDiv.textContent) === obj.BrojSedista;
-            });
-            if (objekat) {
-                sedisteDiv.style.backgroundColor = 'blue';
-                sedisteDiv.style.color = 'white';
-                sedisteDiv.style.pointerEvents = "none";
-            }
-
             redDiv.appendChild(sedisteDiv);
         }
         pozorisnaSala.appendChild(redDiv);
     }
-
 
 
     var sedista = document.querySelectorAll('.sediste');
@@ -66,10 +54,8 @@ function klikNaSediste(event) {
 
     if (sediste.classList.contains('rezervisano')) {
         ukloniRezervaciju(sediste.textContent);
-        ukloniRezervaciju(sediste.textContent);
         sediste.classList.remove('rezervisano');
     } else {
-        dodajRezervaciju(sediste.textContent);
         dodajRezervaciju(sediste.textContent);
         sediste.classList.add('rezervisano');
     }
@@ -122,7 +108,6 @@ function prikaziInformacijeORezervaciji() {
     if (rezervisanaSedista.length === 0) {
         rezervacijaInfo.style.display = 'none';
         return;
-        return;
     }
 
     var rezervacijaHTML = '<h3>Резервисана седишта:</h3><ul>';
@@ -130,11 +115,7 @@ function prikaziInformacijeORezervaciji() {
     rezervisanaSedista.forEach(function(sediste) {
         var index = document.getElementById('dropPredstava').value;
 
-        var index = document.getElementById('dropPredstava').value;
-
         var red = Math.ceil(parseInt(sediste.textContent) / 10);
-        var cena = parseInt(dropDM[index].karta.Cena);
-
         var cena = parseInt(dropDM[index].karta.Cena);
 
         ukupnaCena += cena;
@@ -208,7 +189,6 @@ async function rezervisi() {
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('sediste')) {
         event.target.classList.toggle('selected');
-        event.target.classList.toggle('selected');
     }
 });
 
@@ -223,7 +203,6 @@ function prikaziInformacijeOSedistu(sediste) {
     return informacije;
 }
 
-
 function postaviDogadjajZaSedista() {
     var sedista = document.querySelectorAll('.sediste');
 
@@ -231,12 +210,10 @@ function postaviDogadjajZaSedista() {
         sediste.addEventListener('mouseenter', function() {
             var informacije = prikaziInformacijeOSedistu(parseInt(this.textContent));
 
-
             var dropdown = document.createElement('div');
             dropdown.classList.add('dropdown');
             dropdown.textContent = informacije;
             dropdown.style.position = 'absolute';
-            dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; 
             dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; 
             dropdown.style.left = sediste.offsetLeft + 'px';
             sediste.appendChild(dropdown);
@@ -247,72 +224,7 @@ function postaviDogadjajZaSedista() {
             if (dropdown) {
                 dropdown.remove();
             }
+
         });
     });
 }
-
-
-
-
-
-let dropDM = [];
-let greenDiv = [];
-
-async function dohvatiPodatke() {
-    let response = await fetch('http://localhost/dropDownMenu.php');
-    if (!response.ok) {
-        throw new Error('Network response was not ok1');
-    }
-    return response.json();
-}
-
-
-document.getElementById('dropPredstava').addEventListener('change', function() {
-    var selectedValue = this.value;
-    posaljiVrednostNaServer(selectedValue);
-});
-
-async function posaljiVrednostNaServer(selectedValue) {
-    try {
-        const formData = new FormData();
-        formData.append('idPredstave', selectedValue);
-
-        const response = await fetch('http://localhost/klasaR.php', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (!response.ok) {
-            throw new Error('Došlo je do greške prilikom slanja zahteva.');
-        }
-
-        const rezultat = await response.json();
-
-        
-        var nizRezultata = JSON.parse(rezultat);
-        generisiSedista(nizRezultata);
-    } catch (error) {
-        console.error('Greška:', error);
-    }
-}
-  
-
-
-
-
-
-async function main() {
-    try {
-        dropDM = await dohvatiPodatke();
-        popuniPadajuciMeni(dropDM);
-
-        postaviDogadjajZaSedista();
-
-        prikaziInformacijeORezervaciji();
-
-    } catch (error) {
-        console.error('Greška prilikom povlačenja slika:', error);
-    }
-}
-
-window.onload = main;

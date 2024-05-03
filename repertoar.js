@@ -2,8 +2,7 @@
 
 function prikaziPredstave(pred) {
     var container = document.getElementById("predstave-container");
-    container.innerHTML = ""; 
-    container.innerHTML = ""; 
+    container.innerHTML = "";
 
     pred.forEach(function(predst) {
         var div = document.createElement("div");
@@ -66,7 +65,6 @@ function popuniZanrove(pred) {
     zanrovi.forEach(function(zanr) {
         var option = document.createElement("option");
         option.value = zanr.toLowerCase(); 
-        option.value = zanr.toLowerCase(); 
         option.textContent = zanr;
         console.log(option.value + "="  +option.textContent);
         zanrSelect.appendChild(option);
@@ -118,8 +116,6 @@ function prikaziDetalje(odabranaPredstava) {
 
 
         var predstavaDiv = document.getElementById("popup");
-
-        var predstavaDiv = document.getElementById("popup");
         if (predstavaDiv) {
             predstavaDiv.appendChild(detaljiDiv);
         } else {
@@ -127,8 +123,6 @@ function prikaziDetalje(odabranaPredstava) {
         }
 }
 
-const popup = (pred) => {
-    var popup = document.getElementById('popup');
 const popup = (pred) => {
     var popup = document.getElementById('popup');
     popup.innerHTML = "";
