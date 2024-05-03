@@ -21,5 +21,3 @@ $(document).ready(function(){
         $(".card").slice(start, end).show();
     });
 });
-
-// OVO
