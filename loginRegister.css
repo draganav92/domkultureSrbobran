@@ -1,3 +1,4 @@
+
 .login-register-container {
     position: fixed;
     top: 45px;
@@ -20,6 +21,7 @@
     display: block;
 }
 
+
 .login-register-card input[type="text"],
 .login-register-card input[type="password"],
 .login-register-card input[type="email"],
@@ -41,3 +43,5 @@
 .login-register-card button:hover {
     background-color: #0056b3;
 }
+
+/* OVO */

@@ -1,11 +1,10 @@
-
 function popuniPadajuciMeni(pred) {
     var dropPredstava = document.getElementById("dropPredstava");
 
     pred.forEach(function(predst) {
         var option = document.createElement("option");
-        option.value = predst.predstava.IDPredstava; 
-        option.textContent = predst.predstava.NazivPredstave; 
+        option.value = predst.predstava.IDPredstava;
+        option.textContent = predst.predstava.NazivPredstave;
         dropPredstava.appendChild(option);
 
     });
@@ -14,6 +13,7 @@ function popuniPadajuciMeni(pred) {
 
 function generisiSedista(nizSedista) {
     var pozorisnaSala = document.querySelector('.pozorisna-sala');
+    pozorisnaSala.innerHTML = "";
     pozorisnaSala.innerHTML = "";
     for (var i = 1; i <= 5; i++) {
         var redDiv = document.createElement('div');
@@ -33,10 +33,21 @@ function generisiSedista(nizSedista) {
                 sedisteDiv.style.pointerEvents = "none";
             }
 
+
+            var objekat = nizSedista.find(function(obj) {
+                return parseInt(sedisteDiv.textContent) === obj.BrojSedista;
+            });
+            if (objekat) {
+                sedisteDiv.style.backgroundColor = 'blue';
+                sedisteDiv.style.color = 'white';
+                sedisteDiv.style.pointerEvents = "none";
+            }
+
             redDiv.appendChild(sedisteDiv);
         }
         pozorisnaSala.appendChild(redDiv);
     }
+
 
 
     var sedista = document.querySelectorAll('.sediste');
@@ -47,13 +58,18 @@ function generisiSedista(nizSedista) {
 
 
 
+
+
+
 function klikNaSediste(event) {
     var sediste = event.target;
 
     if (sediste.classList.contains('rezervisano')) {
         ukloniRezervaciju(sediste.textContent);
+        ukloniRezervaciju(sediste.textContent);
         sediste.classList.remove('rezervisano');
     } else {
+        dodajRezervaciju(sediste.textContent);
         dodajRezervaciju(sediste.textContent);
         sediste.classList.add('rezervisano');
     }
@@ -96,15 +112,16 @@ function ukloniRezervaciju(sediste) {
 }
 
 
+
 function prikaziInformacijeORezervaciji() {
     var rezervisanaSedista = document.querySelectorAll('.rezervisano');
     var rezervacijaInfo = document.getElementById('rezervacija-info');
 
     var ukupnaCena = 0;
 
-
     if (rezervisanaSedista.length === 0) {
         rezervacijaInfo.style.display = 'none';
+        return;
         return;
     }
 
@@ -113,7 +130,11 @@ function prikaziInformacijeORezervaciji() {
     rezervisanaSedista.forEach(function(sediste) {
         var index = document.getElementById('dropPredstava').value;
 
+        var index = document.getElementById('dropPredstava').value;
+
         var red = Math.ceil(parseInt(sediste.textContent) / 10);
+        var cena = parseInt(dropDM[index].karta.Cena);
+
         var cena = parseInt(dropDM[index].karta.Cena);
 
         ukupnaCena += cena;
@@ -126,6 +147,7 @@ function prikaziInformacijeORezervaciji() {
         
     rezervacijaInfo.style.display = 'block';
 }
+
 
 
 
@@ -186,13 +208,13 @@ async function rezervisi() {
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('sediste')) {
         event.target.classList.toggle('selected');
+        event.target.classList.toggle('selected');
     }
 });
 
-
 function prikaziInformacijeOSedistu(sediste) {
     var red = Math.ceil(sediste / 10);
-    var brojSedista = sediste; 
+    var brojSedista = sediste;
     var cena = predstave[dropPredstava.selectedIndex].cena;
     let informacije = `Ред: ${red}, Број седишта: ${brojSedista}, Цена улазнице: ${cena} дин`;
 
@@ -201,6 +223,7 @@ function prikaziInformacijeOSedistu(sediste) {
     return informacije;
 }
 
+
 function postaviDogadjajZaSedista() {
     var sedista = document.querySelectorAll('.sediste');
 
@@ -208,17 +231,18 @@ function postaviDogadjajZaSedista() {
         sediste.addEventListener('mouseenter', function() {
             var informacije = prikaziInformacijeOSedistu(parseInt(this.textContent));
 
+
             var dropdown = document.createElement('div');
             dropdown.classList.add('dropdown');
             dropdown.textContent = informacije;
             dropdown.style.position = 'absolute';
+            dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; 
             dropdown.style.top = sediste.offsetTop + sediste.offsetHeight + 'px'; 
             dropdown.style.left = sediste.offsetLeft + 'px';
             sediste.appendChild(dropdown);
         });
 
         sediste.addEventListener('mouseleave', function() {
-
             var dropdown = this.querySelector('.dropdown');
             if (dropdown) {
                 dropdown.remove();
@@ -226,8 +250,6 @@ function postaviDogadjajZaSedista() {
         });
     });
 }
-
-
 
 
 
@@ -266,17 +288,8 @@ async function posaljiVrednostNaServer(selectedValue) {
 
         const rezultat = await response.json();
 
-        console.log('Odgovor sa servera:', rezultat);
-        var nizRezultata = JSON.parse(rezultat);
         
-        console.log(typeof nizRezultata);
-        nizRezultata.forEach(function(obj) {
-            for (var key in obj) {
-                if (obj.hasOwnProperty(key)) {
-                    console.log('Tip vrednosti za ključ ' + key + ' je: ' + typeof obj[key]);
-                }
-            }
-        });
+        var nizRezultata = JSON.parse(rezultat);
         generisiSedista(nizRezultata);
     } catch (error) {
         console.error('Greška:', error);
@@ -296,6 +309,7 @@ async function main() {
         postaviDogadjajZaSedista();
 
         prikaziInformacijeORezervaciji();
+
     } catch (error) {
         console.error('Greška prilikom povlačenja slika:', error);
     }

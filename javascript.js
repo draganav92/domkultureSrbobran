@@ -17,7 +17,9 @@ $(document).ready(function(){
         var end = start + cardsPerPage;
 
         $(".card").hide();
-        
+
         $(".card").slice(start, end).show();
     });
 });
+
+// OVO

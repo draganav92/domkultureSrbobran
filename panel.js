@@ -280,3 +280,5 @@ window.onload = function(){
     korMain();
     rezMain();
 };
+
+// OVO

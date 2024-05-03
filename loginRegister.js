@@ -1,7 +1,9 @@
+
 function toggleLoginRegister() {
     var container = document.querySelector('.login-register-container');
     container.classList.toggle('active');
 }
+
 
 function showLogin() {
     document.getElementById('login-card').classList.add('active');
@@ -82,6 +84,7 @@ function login(event) {
 
 
 
+
 function logout() {
 
     let formData = new FormData();
@@ -92,7 +95,7 @@ function logout() {
     })
     .then(response => response.text())
     .then(data => {
-        alert(data); 
+        alert(data);
         localStorage.removeItem('loggedInUser');
         location.reload();
     })
@@ -102,14 +105,18 @@ function logout() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
         var kor = JSON.parse(loggedInUser);
         console.log(kor.korisnik.IDKorisnik);
         document.getElementById('logout-btn').style.display = 'block';
+
         document.getElementById('loginRegister-btn').style.display = 'none';
         if(kor.korisnik.IDKorisnik === 1) {
             document.getElementById('admin-link').style.display = 'block';
         }
     }
 });
+
+// OVO

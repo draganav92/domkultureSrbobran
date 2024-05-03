@@ -19,3 +19,5 @@ document.getElementById("kontaktForma").addEventListener("submit", function(even
         console.error('Greška:', error);
     });
 });
+
+// OVO
