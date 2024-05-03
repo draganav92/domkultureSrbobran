@@ -340,13 +340,9 @@ header
       z-index: 1;
     }
     .center{
-    .center{
     background-color: #dfdfdb;
     display: flex;
     justify-content: center;
     align-items: center;
     }
 }
-
-
-/* OVO */
