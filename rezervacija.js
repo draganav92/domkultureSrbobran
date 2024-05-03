@@ -7,7 +7,6 @@ function popuniPadajuciMeni(pred) {
         option.value = predst.predstava.IDPredstava;
         option.textContent = predst.predstava.NazivPredstave;
         dropPredstava.appendChild(option);
-
     });
 }
 
@@ -294,5 +293,3 @@ async function main() {
 }
 
 window.onload = main;
-
-// OVO
