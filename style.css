@@ -4,11 +4,7 @@
     height: calc(66vh - 20px); 
     margin-top: 20px; 
     margin-bottom: 20px;
-    height: calc(66vh - 20px); 
-    margin-top: 20px; 
-    margin-bottom: 20px;
 }
-
 
 .carousel img {
     width: 100%; 
@@ -261,12 +257,7 @@ header
     height: 100px;
     background-color: silver;
     color: white;
-    height: 100px;
-    background-color: silver;
-    color: white;
     text-align: center;
-    line-height: 80px;
-    margin: 0 auto 10px auto;
     line-height: 80px;
     margin: 0 auto 10px auto;
 }
@@ -294,9 +285,9 @@ header
     #rezervacija-info {
         position: absolute;
         top: 0;
-        right: 20px; /* Pomeramo div ka desnoj ivici ekrana */
+        right: 20px; 
         width: 300px;
-        height: calc(100vh +100px); /* Visina ekrana minus visina hedera i footera */
+        height: calc(100vh +100px); 
         background-color: #f5f5f5;
         padding: 10px;
         overflow-y: auto;
