@@ -279,4 +279,8 @@ window.onload = function(){
     predMain();
     korMain();
     rezMain();
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> a6e94c7 (to)

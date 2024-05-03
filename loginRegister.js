@@ -116,4 +116,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('admin-link').style.display = 'block';
         }
     }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> a6e94c7 (to)

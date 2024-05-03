@@ -165,4 +165,8 @@ async function main() {
     }
 }
 
+<<<<<<< HEAD
 window.onload = main;
+=======
+window.onload = main;
+>>>>>>> a6e94c7 (to)
