@@ -226,7 +226,7 @@ async function dohvatiPredstave() {
 }
 
 async function dohvatiKorisnike() {
-    let response = await fetch('http://localhost/getKorisnike.php?getAllKorisnici=1');
+    let response = await fetch('http://localhost/getKorisnike.php?getAllUsers=1');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
@@ -234,7 +234,7 @@ async function dohvatiKorisnike() {
 }
 
 async function dohvatiRezervacije() {
-    let response = await fetch('http://localhost/getRezervacije.php?getAllRezervacije=1');
+    let response = await fetch('http://localhost/getRezervacije.php?getAllReservations=1');
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
@@ -279,8 +279,4 @@ window.onload = function(){
     predMain();
     korMain();
     rezMain();
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> a6e94c7 (to)
